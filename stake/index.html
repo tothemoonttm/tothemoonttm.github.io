@@ -1,0 +1,416 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="./images/logo.png">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title  -->
+    <title>TTM Staking</title>
+
+    <!-- Favicon  -->
+    <link rel="icon" href="./images/logo.png">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap">
+
+    <!-- ***** All CSS Files ***** -->
+
+    <!-- Style css -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <style>
+        .faq-section {
+            margin-top: 20px;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .faq-title {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .faq-item {
+            cursor: pointer;
+            background-color: #323232;
+            color: #007bff;
+            padding: 15px;
+            border: 2px solid #F2A900;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background-color: #0bb94d;
+            color: #fff;
+        }
+
+        .faq-answer {
+            display: none;
+            background-color: #f0f0f0;
+            padding: 15px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+            color: #0b0b0b;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--====== Preloader Area Start ======-->
+    <div id="gameon-preloader" class="gameon-preloader">
+        <!-- Preloader Animation -->
+        <div class="preloader-animation">
+            <!-- Spinner -->
+            <div class="spinner"></div>
+            <p class="fw-5 text-center text-uppercase">Loading</p>
+        </div>
+        <!-- Loader Animation -->
+        <div class="loader-animation">
+            <div class="row h-100">
+                <!-- Single Loader -->
+                <div class="col-3 single-loader p-0">
+                    <div class="loader-bg"></div>
+                </div>
+                <!-- Single Loader -->
+                <div class="col-3 single-loader p-0">
+                    <div class="loader-bg"></div>
+                </div>
+                <!-- Single Loader -->
+                <div class="col-3 single-loader p-0">
+                    <div class="loader-bg"></div>
+                </div>
+                <!-- Single Loader -->
+                <div class="col-3 single-loader p-0">
+                    <div class="loader-bg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====== Preloader Area End ======-->
+
+    <div class="main">
+        <!-- ***** Header Start ***** -->
+        <header id="header">
+            <!-- Navbar -->
+            <nav data-aos="zoom-out" data-aos-delay="800" class="navbar gameon-navbar navbar-expand">
+                <div class="container header">
+
+                    <!-- Logo -->
+                    <a class="navbar-brand" href="/">
+                        <!-- <img src="./assets/img/logo/logo.png" alt="Brand Logo" /> -->
+                        <!-- image with text logo -->
+
+                        <img src="./images/logo.png" alt="" class="img-fluid logo-img">
+                        <span class="logo-text">TTM Stake</span>
+
+                        <!-- <img src="./assets/img/logo.png" alt="" class="img-fluid logo-img"> -->
+
+                    </a>
+
+                    <div class="ml-auto"></div>
+
+                    <!-- Navbar Action Button -->
+                    <ul class="navbar-nav action">
+                        <li class="nav-item ml-2">
+                            <span id="connectBtn" class="btn ml-lg-auto btn-bordered-white connectBtn"><i
+                                    class="icon-wallet mr-md-2"></i>Wallet Connect</span>
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+        </header>
+        <!-- ***** Header End ***** -->
+
+
+
+        <!-- ***** Staking Area Start ***** -->
+        <section class="staking-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-7">
+                        <div class="card no-hover staking-card single-staking">
+                            <h3 class="m-0">TTM Staking</h3>
+                            <h4 class="mx-auto mt-3">Balance :
+                                <span class="text-white balance">--</span>
+                            </h4>
+
+                            <ul class="nav nav-tabs staking-tabs border-0 my-3 my-md-4" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="tab-link active" id="tab-one-tab" data-toggle="tab" href="#tab-one"
+                                        role="tab" aria-controls="tab-one" aria-selected="true">28 Days</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content mt-md-3" id="myTabContent">
+                                <div class="tab-pane fade show active" id="tab-one" role="tabpanel"
+                                    aria-labelledby="tab-one-tab">
+                                    <div class="staking-tab-content">
+                                        <!-- Info Box -->
+                                        <div class="info-box d-flex justify-content-between">
+                                            <div class="info-left">
+                                                <ul class="list-unstyled">
+                                                    <li><strong>Lock period:</strong> 28 days</li>
+                                                    <li><strong>Max per stake:</strong> 1000 TTM</li>
+                                                    <li><strong>Stake fee:</strong> 1 TTM</li>
+                                                    <li><strong>Early unstake fee:</strong> 20%</li>
+                                                    <li><strong>Your Staked:</strong> <span id="stakedLb"></span></li>
+                                                </ul>
+                                            </div>
+                                            <div class="info-right d-flex flex-column">
+                                                <span class="apyEst">--</span>
+                                                <span>APY*</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="input-box my-4">
+                                <div class="input-area d-flex flex-column flex-md-row mb-3">
+                                    <div class="input-text">
+                                        <input id="tokenAmtTb" name="tokenAmtTb" type="text" placeholder="0.00">
+                                    </div>
+                                    <button id="stakeBtn"
+                                        class="stakeBtn btn input-btn mt-2 mt-md-0 ml-md-3">Approve</button>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12 col-lg-6">
+                                        <button class="btn input-btn mt-1 w-100 withdrawTokensBtn">Withdraw</button>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-lg-6">
+                                        <button class="btn input-btn mt-1 w-100 harvestRewardsBtn">Claim
+                                            Rewards</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="mt-3"><strong><font color="green">APY is dynamic 30 ~ 100%.</font></strong></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-5">
+                        <div class="staking-items mt-4 mt-md-0">
+                            <!-- Single Card -->
+                            <div class="card no-hover staking-card">
+                                <h3 class="m-0 totalStaked">--</h3>
+                                <p>Total TTM Staked</p>
+                            </div>
+                            <!-- Single Card -->
+                            <div class="card no-hover staking-card my-4">
+                                <h3 class="m-0" id="unlockLb">--</h3>
+                                <p>Next Unlock Date</p>
+                            </div>
+                            <!-- Single Card -->
+                            <div class="card no-hover staking-card">
+                                <h3 class="m-0" id="rewardsLb">--</h3>
+                                <p>Your available rewards</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ***** Staking Area End ***** -->
+
+        <!-- WALLET CONNECT MODAL BOOSTRAP -->
+        <div class="modal fade" id="walletConnectModal">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Choose Your Wallet and Select/Change Chain Network to Core DAO</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 col-6" id="modalMMConnect">
+                                <img class="mm img-fluid w-50 rounded mx-auto d-block" src="./assets/img/metamask.png" />
+                                <h4 class="text-center">MetaMask</h4>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-6" id="modalWConnect">
+                                <img class="img-fluid w-50 rounded mx-auto d-block"
+                                    src="./assets/img/walletConnect.png" />
+                                <h4 class="text-center">Wallet Connect</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ***** FAQ Area Start ***** -->
+
+        <div class="faq-section">
+            <div class="faq-title">Frequently Asked Questions (FAQ)</div>
+            <div class="faq-item" onclick="toggleAnswer('faq1')">
+                <h4>What is TTM Staking?</h4>
+            </div>
+            <div id="faq1" class="faq-answer">
+                <p>TTM Staking is a platform where you can lock your TTM Token for a specific period to earn rewards.
+                    The longer you lock, the higher the potential rewards.</p>
+            </div>
+
+            <div class="faq-item" onclick="toggleAnswer('faq2')">
+                <h4>How long is the lock period?</h4>
+            </div>
+            <div id="faq2" class="faq-answer">
+                <p>The lock period for TTM Staking is 28 days. During this period, your TTM tokens will be locked, and
+                    you will earn rewards based on the staking duration.</p>
+            </div>
+
+            <div class="faq-item" onclick="toggleAnswer('faq3')">
+                <h4>What is the minimum and maximum stake?</h4>
+            </div>
+            <div id="faq3" class="faq-answer">
+                <p>The minimum stake per transaction is 2 TTM, while the maximum stake per transaction is 1000 TTM.</p>
+            </div>
+        </div>
+
+        <!-- ***** FAQ Area End ***** -->
+
+        <!--====== Footer Area Start ======-->
+        <footer class="footer-area">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8 text-center">
+                        <!-- Footer Menu -->
+                        <ul class="footer-menu">
+                            <li><a href="https://tothemoonttm.github.io/tokensale/"><i class="fa-solid fa-cart-shopping"></i>
+                                    Buy TTM</a></li>
+                            <li><a href="https://oreswap.xyz/#/swap"><i class="fa-solid fa-rotate"></i>
+                                    TRADE</a></li>
+                            <li><a href="https://x.com/"><i class="fa-brands fa-twitter"></i> Twitter</a>
+                            </li>
+                            <li><a href="https://t.me/tothemoonwithttm"><i class="fa-brands fa-telegram"></i> Telegram</a>
+                            </li>
+                        </ul>
+                        <!-- Footer Items -->
+                        <div class="footer-items">
+                            <!-- Copyright Area -->
+                            <div class="copyright-area py-4">&copy;2024 MoonLabs, All Rights Reserved </div>
+                        </div>
+                        <!-- Scroll To Top -->
+                        <div id="scroll-to-top" class="scroll-to-top">
+                            <a href="#header" class="smooth-anchor">
+                                <i class="fa-solid fa-arrow-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--====== Footer Area End ======-->
+
+        <!--====== Modal Search Area Start ======-->
+        <div id="search" class="modal fade p-0">
+            <div class="modal-dialog dialog-animated">
+                <div class="modal-content h-100">
+                    <div class="modal-header" data-dismiss="modal">
+                        Search <i class="far fa-times-circle icon-close"></i>
+                    </div>
+                    <div class="modal-body">
+                        <form class="row">
+                            <div class="col-12 align-self-center">
+                                <div class="row">
+                                    <div class="col-12 pb-3">
+                                        <h2 class="search-title mt-0 mb-3">What are you looking for?</h2>
+                                        <p>Build with happy.</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 input-group mt-md-4">
+                                        <input type="text" placeholder="Enter your keywords">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 input-group align-self-center">
+                                        <button class="btn btn-bordered-white mt-3">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--====== Modal Search Area End ======-->
+
+        <!--====== Modal Responsive Menu Area Start ======-->
+        <div id="menu" class="modal fade p-0">
+            <div class="modal-dialog dialog-animated">
+                <div class="modal-content h-100">
+                    <div class="modal-header" data-dismiss="modal">
+                        Menu <i class="far fa-times-circle icon-close"></i>
+                    </div>
+                    <div class="menu modal-body">
+                        <div class="row w-100">
+                            <div class="items p-0 col-12 text-center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--====== Modal Responsive Menu Area End ======-->
+
+    </div>
+
+
+    <!-- ***** All jQuery Plugins ***** -->
+
+    <!-- jQuery(necessary for all JavaScript plugins) -->
+    <script src="./assets/js/vendor/jquery.min.js"></script>
+
+    <!-- Bootstrap js -->
+    <script src="./assets/js/vendor/popper.min.js"></script>
+    <script src="./assets/js/vendor/bootstrap.min.js"></script>
+
+    <!-- Plugins js -->
+    <script src="./assets/js/vendor/all.min.js"></script>
+    <script src="./assets/js/vendor/gallery.min.js"></script>
+    <script src="./assets/js/vendor/slider.min.js"></script>
+    <script src="./assets/js/vendor/countdown.min.js"></script>
+    <script src="./assets/js/vendor/shuffle.min.js"></script>
+
+    <!-- Active js -->
+    <script src="./assets/js/main.js"></script>
+
+    <!-- WEB 3 JS -->
+    <script type="text/javascript" src="./assets/unpkg.com/web3%401.5.2/dist/web3.min.js"></script>
+    <script type="text/javascript" src="./assets/unpkg.com/web3modal%401.9.4/dist/index.js"></script>
+    <script type="text/javascript" src="./assets/unpkg.com/evm-chains%400.2.0/dist/umd/index.min.js"></script>
+    <script type="text/javascript"
+        src="./assets/unpkg.com/%40walletconnect/web3-provider%401.6.2/dist/umd/index.min.js"></script>
+    <!-- STAKING JS -->
+    <script type="text/javascript" src="./assets/js/stake.js"></script>
+    <!-- FAQ SCRIPT -->
+    <script>
+        function toggleAnswer(faqId) {
+            var answer = document.getElementById(faqId);
+
+            if (answer.style.display === 'none' || answer.style.display === '') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
