@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="https://cuanswap.xyz/images/coins/cusd.svg">
+    <title>TTM</title>
+    <meta name="description" content="TTMLab development">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script>
+
+        async function detectAndSwitchNetwork() {
+            if (typeof window.ethereum !== 'undefined') {
+                const ethereum = window.ethereum;
+
+                try {
+
+                    const chainId = await ethereum.request({ method: 'eth_chainId' });
+
+                    if (chainId !== '0x45c') {
+
+                        await ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x45c' }] });
+                    }
+                } catch (error) {
+                    console.error('Tidak dapat mengganti jaringan:', error);
+                }
+            } else {
+                console.log('Web3 tidak terdeteksi. Pastikan MetaMask atau penyedia Web3 lainnya terinstal.');
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="welcome" class="welcome">
+        <h1>TTM</h1>
+    </div>
+    <div id="content" class="content">
+        <header>
+            <div class="logo">
+                <img src="./images/logo.png" width="100" height="100" alt="Token Logo">
+                <h1>TTM</h1>
+                <p>TTM Tokensale</p>
+            </div>
+        </header>
+        <main>
+            <div class="countdown-box">
+
+                <center><button id="connectWallet">Connect Wallet</button></center>
+
+            </div>
+           <section id="connectedWallet" style="display: none;">
+                <section>
+                    <h2><i class="fas fa-wallet"></i> Wallet Connected</h2>
+                    <p><b>You CORE Balance:</b> <span id="coreBalance"></span> CORE</p>
+                    <p><b>You TTM Balance:</b> <span id="tokenBalance"></span> TTM</p>
+                    <p><b>You Wallet:</b> <span id="walletAddress"></span></p>
+                </section>
+                <section>
+                    <h2><i class="fas fa-rocket"></i> PRICE INFORMATION</h2>
+                    <p><b>TTM Rate:</b> <span id="presaleRate"></span> TTM/CORE</p>
+                    <p><b>Min-Buy:</b> <span>3</span> CORE</p>
+                    <p><b>Max-Buy:</b> <span id="maxPurchase"></span> CORE/Wallet</p>
+                    <p><b>Total Redemption:</b> <span id="weiRaised"></span> CORE</p>
+                </section>
+                <section>
+                    <h2><i class="fas fa-shopping-cart"></i> TTM Purchase</h2>
+                    <form id="buyTokensForm">
+                        <label for="buyAmount">CORE Amount to Buy:</label>
+                        <input type="number" id="buyAmount" step="any" required style="width: 80%;" min="3">
+                        <button type="submit">BUY TTM</button>
+                    </form>
+                    <div id="operationResult" style="display: none;">
+                        <p id="operationMessage"></p>
+                    </div>
+                </section>
+                <section>
+                    <h2><i class="fas fa-coins"></i> Set Presale Rate</h2>
+                    <form id="setPresaleRateForm">
+                        <label for="newRate">New Presale Rate:</label>
+                        <input type="text" id="newRate" name="newRate" required>
+                        <button type="submit">Set Rate</button>
+                    </form>
+                    <div id="operationResult" style="display: none;">
+                        <p id="operationMessage"></p>
+                    </div>
+                </section>
+                <section>
+                    <h2><i class="fas fa-coins"></i> withdraw</h2>
+                    <button id="withdrawCoins">Withdraw CORE</button>
+                    <form id="withdrawTokensForm">
+                        <label for="tokenAddress">Token Address:</label>
+                        <input type="text" id="tokenAddress" name="tokenAddress" required>
+                        <label for="tokenAmount">Token Amount:</label>
+                        <input type="text" id="tokenAmount" name="tokenAmount" required>
+                        <button type="submit">Withdraw Token</button>
+                    </form>
+                    <div id="operationResult" style="display: none;">
+                        <p id="operationMessage"></p>
+                    </div>
+                </section>
+            </section>
+        </main>
+        <footer>
+            <nav>
+                <ul class="footer-menu">
+                    <li><a href="https://x.com/"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://t.me/"><i class="fab fa-telegram"></i></a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+                </ul>
+            </nav>
+        </footer>
+        <script src="./js/web3.js"></script>
+        <script type="module" src="./js/app.js"></script>
+    </div>
+
+<script>
+        setTimeout(function () {
+            var welcomeDiv = document.getElementById("welcome");
+            var contentDiv = document.getElementById("content");
+
+            welcomeDiv.style.display = "none";
+            contentDiv.style.display = "block";
+        }, 1000);
+    </script>
+</body>
+
+</html>

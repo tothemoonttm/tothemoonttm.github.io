@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="./images/logo.png">
+    <title>TTM TokenSale</title>
+    <meta name="description" content="TTM Tokensale pages: buy TTM Token and stake to get 100% APY.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script>
+
+        async function detectAndSwitchNetwork() {
+            if (typeof window.ethereum !== 'undefined') {
+                const ethereum = window.ethereum;
+
+                try {
+
+                    const chainId = await ethereum.request({ method: 'eth_chainId' });
+
+                    if (chainId !== '0x45c') {
+
+                        await ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x45c' }] });
+                    }
+                } catch (error) {
+                    console.error('Tidak dapat mengganti jaringan:', error);
+                }
+            } else {
+                console.log('Web3 tidak terdeteksi. Pastikan MetaMask atau penyedia Web3 lainnya terinstal.');
+            }
+        }
+
+        window.addEventListener('load', detectAndSwitchNetwork);
+
+        await window.ethereum.request({
+            "method": "wallet_watchAsset",
+            "params": {
+                "type": "ERC20",
+                "options": {
+                    "address": "0x29114A0642Dc70Cc82bEB374c6e1c23E470A267E",
+                    "symbol": "TTM",
+                    "decimals": 18,
+                    "image": "./images/logo.png",
+                    "tokenId": "1116"
+                }
+            }
+        });
+
+    </script>
+</head>
+
+<body>
+    <div id="welcome" class="welcome">
+        <img src="./images/logo.png" width="64" height="64" />
+    </div>
+    <div id="content" class="content">
+        <header>
+            <div class="logo">
+                <img src="./images/logo.png" width="100" height="100" alt="Token Logo">
+                <h1>To The Moon Token</h1>
+                <p>Welcome to TTM Tokensale</p>
+            </div>
+            <div>
+                <nav>
+                    <ul>
+                        <li><a href="https://tothemoonttm.github.io/stake/">Staking</a></li>
+                        <li><a href="./whitepaper.pdf">Whitepaper</a>
+                        </li>
+                        <li><a
+                                href="https://scan.coredao.org/token/0x29114a0642dc70cc82beb374c6e1c23e470a267e">Contract</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <div class="countdown-box">
+
+                <center>
+                    <h2>Please Connect Wallet and switch network to Core DAO</h2>
+                </center>
+                <div class="countdown" id="countdown"></div>
+                <center><button id="connectWallet">Connect Wallet</button></center>
+
+            </div>
+            <br />
+            <section>
+                <h2>HOW TO BUY?</h2>
+                <p>1. Click connect Wallet button on this web and select/change chain network on your wallet to Core
+                    DAO.
+                    <br /><br />
+                    2. Fill out the TTM purchase form at the bottom and enter the amount of CORE you want to spend.
+                </p>
+            </section>
+            <section>
+                <h2>PLEASE READ!</h2>
+                <p>- You will immediately receive token you purchased, check your wallet after purchasing, make sure you
+                    have added TTM contract address to you wallet.
+                    <br /><br />
+                    - Every week, the proceeds from TTM sales will be added to Liquidity. Subsequently, BuyBack will be
+                    conducted regardless of the amount of CORE acquired from Tokensale.
+                    <br /><br />
+                    - While the price rate of TTM on DEX tends to be cheaper compared to the Tokensale, you can acquire
+                    more TTM during the Tokensale. Additionally, the development of this project is also contingent upon
+                    the 10% development fund obtained from the Tokensale.
+                    <br /><br />
+                    - Price rate on Tokensale is Dynamic 100~400 TTM per 1 CORE and TokenSale ends after raised funds
+                    1000 CORE.
+                </p>
+            </section>
+            <section>
+                <h2>FUNDS ALLOCATION</h2>
+                <p>70% - for TTM Liquidity.
+                    <br /><br />
+                    10% - for Development Funds.
+                    <br /><br />
+                    10% - for Buyback TTM on DEX.
+                    <br /><br />
+                    10% - If sufficient funds are available, they will be used to list TTM on AVE.ai.
+                </p>
+            </section>
+            <section id="connectedWallet" style="display: none;">
+                <section>
+                    <h2><i class="fas fa-wallet"></i> Wallet Connected</h2>
+                    <p><b>You CORE Balance:</b> <span id="coreBalance"></span> CORE</p>
+                    <p><b>You TTM Balance:</b> <span id="tokenBalance"></span> TTM</p>
+                    <p><b>You Wallet:</b> <span id="walletAddress"></span></p>
+                </section>
+                <section>
+                    <h2><i class="fas fa-rocket"></i> PRICE INFORMATION</h2>
+                    <p><b>CORE Rate:</b> <span id="presaleRate"></span> TTM/CORE</p>
+                    <p><b>Min-Buy:</b> <span>3</span> CORE</p>
+                    <p><b>Max-Buy:</b> <span id="maxPurchase"></span> CORE/Wallet</p>
+                    <p><b>Funds Raised:</b> <span id="weiRaised"></span> CORE</p>
+                </section>
+                <section>
+                    <h2><i class="fas fa-shopping-cart"></i> TTM Purchase</h2>
+                    <form id="buyTokensForm">
+                        <label for="buyAmount">CORE Amount to Buy:</label>
+                        <input type="number" id="buyAmount" step="any" required style="width: 80%;" min="3">
+                        <button type="submit">BUY TTM</button>
+                    </form>
+                    <div id="operationResult" style="display: none;">
+                        <p id="operationMessage"></p>
+                    </div>
+                </section>
+            </section>
+        </main>
+        <footer>
+            <nav>
+                <ul class="footer-menu">
+                    <li><a href="https://x.com/"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://t.me/tothemoonwithttm"><i class="fab fa-telegram"></i></a></li>
+                    <li><a href="mailto:ttm@coredao.org"><i class="fas fa-envelope"></i></a></li>
+                </ul>
+            </nav>
+        </footer>
+        <script src="./js/web3.js"></script>
+        <script type="module" src="./js/app.js"></script>
+    </div>
+
+    <script>
+        setTimeout(function () {
+            var welcomeDiv = document.getElementById("welcome");
+            var contentDiv = document.getElementById("content");
+
+            welcomeDiv.style.display = "none";
+            contentDiv.style.display = "block";
+        }, 1000);
+    </script>
+</body>
+
+</html>
